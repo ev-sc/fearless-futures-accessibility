@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script>
+      jQuery(function() {
+        /* 'Go to top' link keyboard access*/
+        jQuery("#page > a.go-top")
+                .attr("href", "#")
+                .attr("aria-label", "Scroll to top");
+
+        const $mainMenuButton = jQuery("header.site-header div.btn-menu");
+        let mainMenuOpen = false;
+        jQuery("nav.mainnav").attr("aria-expanded", false);
+
+        $mainMenuButton.on("click", function() {
+          jQuery("nav.mainnav").attr("aria-expanded", !mainMenuOpen);
+          mainMenuOpen = !mainMenuOpen;
+        });
+      });
+
+    </script>
+  </head>
+  <body></body>
+</html>
