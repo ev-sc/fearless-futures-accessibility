@@ -65,6 +65,32 @@ jQueryuery(function() {
     });
   });
 
+  /* Complex images no descriptions */
+  jQuery(
+    'img[title="FF_Visuals_Digital_Our_Impact_Organisations – FINAL"],' +
+      "img.wp-image-1375," +
+      "img.wp-image-1378," +
+      "img.wp-image-1384," +
+      "body.schools img.so-widget-image"
+  ).attr({
+    "aria-label":
+      "This is a complex infographic - our apologies that it is not accessible. We are working to change this",
+    alt:
+      "This is a complex infographic - our apologies that it is not accessible. We are working to change this"
+  });
+
+  /* Footer form submit validation */
+  jQuery("div#sidebar-footer input#mc_signup_submit").on("click", function() {
+    let email = jQuery("input#mc_mv_EMAIL").val();
+    let name = jQuery("input#mc_mv_FNAME").val();
+    let valid =
+      (name.length > 0 ? "valid" : "not valid") &&
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
+    if (!valid) {
+      alert("ERROR: Please enter a valid email address and a first name");
+    }
+  });
+
   /* some other shit */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
   let mainMenuOpen = false;
@@ -74,12 +100,4 @@ jQueryuery(function() {
     jQuery("nav.mainnav").attr("aria-expanded", !mainMenuOpen);
     mainMenuOpen = !mainMenuOpen;
   });
-
-  function copyAttributes(from, to) {
-    $($(from)[0].attributes).each(function() {
-      $(to).attr(this.nodeName, this.nodeValue);
-    });
-
-    return $(to);
-  }
 });
