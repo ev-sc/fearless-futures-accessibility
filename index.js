@@ -81,13 +81,52 @@ jQueryuery(function() {
 
   /* Footer form submit validation */
   jQuery("div#sidebar-footer input#mc_signup_submit").on("click", function() {
-    let email = jQuery("input#mc_mv_EMAIL").val();
-    let name = jQuery("input#mc_mv_FNAME").val();
-    let valid =
-      (name.length > 0 ? "valid" : "not valid") &&
-      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
-    if (!valid) {
+    let $email = jQuery("input#mc_mv_EMAIL");
+    let $name = jQuery("input#mc_mv_FNAME");
+    let nameValid = $name.val().length > 0;
+    let emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+      $email.val()
+    );
+    $email.attr("aria-invalid", !emailValid);
+    $name.attr("aria-invalid", !nameValid);
+    if (!(nameValid && emailValid)) {
       alert("ERROR: Please enter a valid email address and a first name");
+    }
+  });
+
+  /* Home page carousel show pagination and add page labels */
+  let $testimonials = jQuery(
+    "div#pl-838 div.widget_sydney_testimonials div.owl-carousel"
+  );
+  $testimonials.attr({
+    "aria-label": "A list of testimonials about Fearless Futures",
+    id: "home-testimonials",
+    "data-autoplay": 0
+  });
+  jQuery($testimonials)
+    .find("div.owl-controls")
+    .attr("style", "display: block !important");
+  jQuery($testimonials)
+    .find("div.owl-pagination div")
+    .each(function(idx) {
+      jQuery(this).attr({
+        tabindex: idx + 100,
+        role: "button",
+        "aria-label": "carousel item: " + idx.toString()
+      });
+    });
+
+  /* Social menu icons focusable state */
+  jQuery("span.social.headersocial > a").attr({ tabindex: -1, disabled: true });
+  jQuery(window).on("scroll", function() {
+    scrollPosition = jQuery(this).scrollTop();
+    if (scrollPosition >= 108) {
+      jQuery("span.social.headersocial > a").removeAttr("tabindex disabled");
+    } else {
+      jQuery("span.social.headersocial > a").attr({
+        tabindex: -1,
+        disabled: true
+      });
     }
   });
 
