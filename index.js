@@ -1,4 +1,4 @@
-jQueryuery(function() {
+jQuery(function() {
   /* 'Go to top' link keyboard access */
   jQuery("#page > a.go-top")
     .attr("href", "#")
@@ -54,7 +54,7 @@ jQueryuery(function() {
   );
 
   /* Schools page header structure */
-  jQuery("header#masthead").append(
+  jQuery("body.schools header#masthead").append(
     "<h1 style='position: absolute; left: -10000px; width: 1px; height: 1px;'>Schools</h1>"
   );
   jQuery("div.textwidget > h1").replaceWith(function() {
@@ -95,26 +95,28 @@ jQueryuery(function() {
   });
 
   /* Home page carousel show pagination and add page labels */
-  let $testimonials = jQuery(
-    "div#pl-838 div.widget_sydney_testimonials div.owl-carousel"
-  );
-  $testimonials.attr({
-    "aria-label": "A list of testimonials about Fearless Futures",
-    id: "home-testimonials",
-    "data-autoplay": 0
-  });
-  jQuery($testimonials)
-    .find("div.owl-controls")
-    .attr("style", "display: block !important");
-  jQuery($testimonials)
-    .find("div.owl-pagination div")
-    .each(function(idx) {
-      jQuery(this).attr({
-        tabindex: idx + 100,
-        role: "button",
-        "aria-label": "carousel item: " + idx.toString()
-      });
+  setTimeout(function() {
+    let $testimonials = jQuery(
+      "div#pl-838 div.widget_sydney_testimonials div.owl-carousel"
+    );
+    $testimonials.attr({
+      "aria-label": "A list of testimonials about Fearless Futures",
+      id: "home-testimonials",
+      "data-autoplay": 0
     });
+    jQuery($testimonials)
+      .find("div.owl-controls")
+      .attr("style", "display: block !important");
+    jQuery($testimonials)
+      .find("div.owl-pagination div")
+      .each(function(idx) {
+        jQuery(this).attr({
+          tabindex: idx + 100,
+          role: "button",
+          "aria-label": "carousel item: " + idx.toString()
+        });
+      });
+  }, 3000);
 
   /* Social menu icons focusable state */
   jQuery("span.social.headersocial > a").attr({ tabindex: -1, disabled: true });
@@ -130,7 +132,7 @@ jQueryuery(function() {
     }
   });
 
-  /* some other shit */
+  /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
   let mainMenuOpen = false;
   jQuery("nav.mainnav").attr("aria-expanded", false);
