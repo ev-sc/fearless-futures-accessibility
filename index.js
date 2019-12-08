@@ -137,6 +137,24 @@ jQuery(function() {
     }
   });
 
+  /* Alt text social media images */
+  jQuery("span.social > a.facebook").attr(
+    "aria-label",
+    "Fearless Futures Facebook page"
+  );
+  jQuery("span.social > a.twitter").attr(
+    "aria-label",
+    "Fearless Futures Twitter account"
+  );
+  jQuery("span.social > a.instagram").attr(
+    "aria-label",
+    "Fearless Futures Instagram account"
+  );
+  jQuery("span.social > a.youtube").attr(
+    "aria-label",
+    "Fearless Futures YouTube account"
+  );
+
   /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
   let mainMenuOpen = false;
