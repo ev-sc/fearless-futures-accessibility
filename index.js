@@ -155,6 +155,15 @@ jQuery(function() {
     "Fearless Futures YouTube account"
   );
 
+  /* Sydney video widget links */
+  jQuery(".widget_sydney_video_widget a.toggle-popup").attr(
+    "aria-label",
+    "Play embedded video from beginning"
+  );
+
+  /* Disable tab focusing within iframes */
+  jQuery("iframe").attr("tabindex", -1);
+
   /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
   let mainMenuOpen = false;
