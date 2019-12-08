@@ -20,6 +20,11 @@ jQuery(function() {
       class: "widget-title"
     });
   });
+  jQuery("div#pl-838")
+    .parent()
+    .prepend(
+      "<h1 style='position: absolute; left: -10000px; width: 1px; height: 1px;'>Home - Organisations</h1>"
+    );
 
   /* Home page header structure */
   jQuery("div#TrainingProgrammes h3")
