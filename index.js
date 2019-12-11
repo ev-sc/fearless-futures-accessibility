@@ -188,9 +188,15 @@ jQuery(function() {
         .parent()
         .hasClass("site-footer")
     ) {
-      jQuery(this).css("outline", "1px solid white");
+      jQuery(this).css({
+        outline: "3px dashed #C97FA1",
+        "outline-offset": "3px"
+      });
     } else {
-      jQuery(this).css("outline", "1px solid #C97FA1");
+      jQuery(this).css({
+        outline: "3px dashed #C97FA1",
+        "outline-offset": "3px"
+      });
     }
   });
 
@@ -228,10 +234,14 @@ jQuery(function() {
     "Lead Programme"
   ];
   $homePage.find("div#TrainingProgrammes div.textwidget a").each(function(idx) {
-    jQuery(this).attr(
-      "aria-label",
-      `More info about & option to book '${tpTitles[idx]}'`
-    );
+    jQuery(this)
+      .attr("aria-label", `More info about & option to book '${tpTitles[idx]}'`)
+      .on("focus", function() {
+        jQuery(this).css({
+          outline: "3px dashed #C97FA1",
+          "outline-offset": "3px"
+        });
+      });
   });
   $schoolsPage.find("div#pg-1134-1 div.panel-grid-cell a.button").hide();
 
