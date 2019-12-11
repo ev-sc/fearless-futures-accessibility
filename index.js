@@ -50,6 +50,14 @@ jQuery(function() {
       style: "font-size: 3vh !important; text-align: center"
     });
   });
+  jQuery("div#pl-906 div.siteorigin-widget-tinymce h5:has(img)").replaceWith(
+    function() {
+      return jQuery("<p />", {
+        html: this.innerHTML,
+        style: "text-align: center"
+      });
+    }
+  );
 
   /* Organisations blog page header structure */
   jQuery("main#main header.page-header h3.archive-title").replaceWith(
@@ -181,15 +189,9 @@ jQuery(function() {
   /* Link outlines */
   const $allHref = jQuery("a");
   $allHref.on("focus", function() {
-    if (
-      jQuery(this)
-        .parent()
-        .parent()
-        .parent()
-        .hasClass("site-footer")
-    ) {
+    if (jQuery(this).closest("footer.site-footer").length > 0) {
       jQuery(this).css({
-        outline: "3px dashed #C97FA1",
+        outline: "3px dashed white",
         "outline-offset": "3px"
       });
     } else {
