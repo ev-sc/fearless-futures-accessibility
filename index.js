@@ -247,6 +247,19 @@ jQuery(function() {
   });
   $schoolsPage.find("div#pg-1134-1 div.panel-grid-cell a.button").hide();
 
+  /* PDF download button */
+  $schoolsPage.find("a.roll-button").each(function() {
+    const $this = jQuery(this);
+    if (
+      $this
+        .text()
+        .toLowerCase()
+        .includes("download")
+    ) {
+      $this.text(`${$this.text()} (PDF - 9.2MB)`).attr("download", true);
+    }
+  });
+
   /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
   let mainMenuOpen = false;
