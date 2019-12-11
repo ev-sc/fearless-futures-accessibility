@@ -1,5 +1,6 @@
 jQuery(function() {
   const $homePage = jQuery("div#pl-838");
+  const $schoolsPage = jQuery("div#pl-1134");
 
   /* 'Go to top' link keyboard access */
   jQuery("#page > a.go-top")
@@ -232,6 +233,7 @@ jQuery(function() {
       `More info about & option to book '${tpTitles[idx]}'`
     );
   });
+  $schoolsPage.find("div#pg-1134-1 div.panel-grid-cell a.button").hide();
 
   /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
