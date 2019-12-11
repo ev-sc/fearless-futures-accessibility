@@ -195,6 +195,17 @@ jQuery(function() {
     jQuery(this).css("outline", "none");
   });
 
+  /* Social icons replace with list */
+  $socialLists = jQuery("span.social");
+  $socialLists.each(function() {
+    jQuery(this)
+      .children()
+      .wrapAll("<ul style='list-style-type:none' />");
+  });
+  $socialLists.find("a").wrap("<li />");
+  $socialLists.find("li").css({ padding: "0 2px", float: "left" });
+  jQuery("footer span.social").css({ display: "inline-block" });
+
   /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
   let mainMenuOpen = false;
