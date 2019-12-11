@@ -164,6 +164,37 @@ jQuery(function() {
   /* Disable tab focusing within iframes */
   jQuery("iframe").attr("tabindex", -1);
 
+  /* Set search bar to 100% */
+  jQuery(
+    "aside.widget_search label, aside.widget_search input.search-field"
+  ).css("width", "100%");
+
+  /* Main nav tabindex & outline */
+  $mainNav = jQuery("nav#mainnav ul li a");
+  $mainNav.each(function(idx) {
+    jQuery(this).attr("tabindex", idx + 2);
+  });
+
+  /* Link outlines */
+  $allHref = jQuery("a");
+  $allHref.on("focus", function() {
+    if (
+      jQuery(this)
+        .parent()
+        .parent()
+        .parent()
+        .hasClass("site-footer")
+    ) {
+      jQuery(this).css("outline", "1px solid white");
+    } else {
+      jQuery(this).css("outline", "1px solid #C97FA1");
+    }
+  });
+
+  $allHref.on("blur", function() {
+    jQuery(this).css("outline", "none");
+  });
+
   /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
   let mainMenuOpen = false;
