@@ -1,4 +1,6 @@
 jQuery(function() {
+  const $homePage = jQuery("div#pl-838");
+
   /* 'Go to top' link keyboard access */
   jQuery("#page > a.go-top")
     .attr("href", "#")
@@ -20,7 +22,7 @@ jQuery(function() {
       class: "widget-title"
     });
   });
-  jQuery("div#pl-838")
+  $homePage
     .parent()
     .prepend(
       "<h1 style='position: absolute; left: -10000px; width: 1px; height: 1px;'>Home - Organisations</h1>"
@@ -170,13 +172,13 @@ jQuery(function() {
   ).css("width", "100%");
 
   /* Main nav tabindex & outline */
-  $mainNav = jQuery("nav#mainnav ul li a");
+  const $mainNav = jQuery("nav#mainnav ul li a");
   $mainNav.each(function(idx) {
     jQuery(this).attr("tabindex", idx + 2);
   });
 
   /* Link outlines */
-  $allHref = jQuery("a");
+  const $allHref = jQuery("a");
   $allHref.on("focus", function() {
     if (
       jQuery(this)
@@ -196,7 +198,7 @@ jQuery(function() {
   });
 
   /* Social icons replace with list */
-  $socialLists = jQuery("span.social");
+  const $socialLists = jQuery("span.social");
   $socialLists.each(function() {
     jQuery(this)
       .children()
@@ -205,6 +207,31 @@ jQuery(function() {
   $socialLists.find("a").wrap("<li />");
   $socialLists.find("li").css({ padding: "0 2px", float: "left" });
   jQuery("footer span.social").css({ display: "inline-block" });
+
+  /* Skip link */
+  jQuery("a.skip-link.screen-reader-text")
+    .attr("tabindex", 1)
+    .css("font-size", "30px")
+    .addClass("screen-reader-shortcut");
+
+  /* Generic buttons */
+  $homePage
+    .find("a.roll-button")
+    .attr(
+      "aria-label",
+      "Read more about Fearless Futures' work with organisations"
+    );
+  const tpTitles = [
+    "Introductory Workshop",
+    "Design for Inclusion",
+    "Lead Programme"
+  ];
+  $homePage.find("div#TrainingProgrammes div.textwidget a").each(function(idx) {
+    jQuery(this).attr(
+      "aria-label",
+      `More info about & option to book '${tpTitles[idx]}'`
+    );
+  });
 
   /* some other stuff */
   const $mainMenuButton = jQuery("header.site-header div.btn-menu");
