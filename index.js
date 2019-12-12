@@ -149,13 +149,14 @@ jQuery(function() {
   }, 3000);
 
   /* Social menu icons focusable state */
-  jQuery("span.social.headersocial > a").attr({ tabindex: -1, disabled: true });
+  const $socialHead = jQuery("span.social.headersocial a");
+  $socialHead.attr({ tabindex: -1, disabled: true });
   jQuery(window).on("scroll", function() {
-    scrollPosition = jQuery(this).scrollTop();
+    const scrollPosition = jQuery(this).scrollTop();
     if (scrollPosition >= 108) {
-      jQuery("span.social.headersocial > a").removeAttr("tabindex disabled");
+      $socialHead.removeAttr("tabindex disabled");
     } else {
-      jQuery("span.social.headersocial > a").attr({
+      $socialHead.attr({
         tabindex: -1,
         disabled: true
       });
