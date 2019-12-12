@@ -148,21 +148,6 @@ jQuery(function() {
       });
   }, 3000);
 
-  /* Social menu icons focusable state */
-  const $socialHead = jQuery("span.social.headersocial a");
-  $socialHead.attr({ tabindex: -1, disabled: true });
-  jQuery(window).on("scroll", function() {
-    const scrollPosition = jQuery(this).scrollTop();
-    if (scrollPosition >= 108) {
-      $socialHead.removeAttr("tabindex disabled");
-    } else {
-      $socialHead.attr({
-        tabindex: -1,
-        disabled: true
-      });
-    }
-  });
-
   /* Alt text social media images */
   jQuery("span.social > a.facebook").attr(
     "aria-label",
@@ -279,7 +264,7 @@ jQuery(function() {
     });
 
   /* Navigation tabindex */
-  const $mainNav = jQuery("nav#mainnav ul li a");
+  const $mainNav = jQuery("nav#mainnav > div ul li a");
   $mainNav.each(function(idx) {
     jQuery(this).attr("tabindex", idx + 2);
   });
@@ -306,8 +291,23 @@ jQuery(function() {
     jQuery(this).css("outline", "none");
   });
 
-  /* Header size on mobile */
+  /* MOBILE: Header size */
   if (isMobile) {
     jQuery("h2.maintitle").attr("style", "font-size: 3rem !important");
   }
+
+  /* Social menu icons focusable state */
+  const $socialHead = jQuery("span.social.headersocial a");
+  $socialHead.attr({ tabindex: -1, disabled: true });
+  jQuery(window).on("scroll", function() {
+    const scrollPosition = jQuery(this).scrollTop();
+    if (scrollPosition >= 108) {
+      $socialHead.removeAttr("tabindex disabled");
+    } else {
+      $socialHead.attr({
+        tabindex: -1,
+        disabled: true
+      });
+    }
+  });
 });
