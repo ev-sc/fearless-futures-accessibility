@@ -97,9 +97,7 @@ jQuery(function() {
 
   /* Complex images no descriptions */
   jQuery(
-    'img[title="FF_Visuals_Digital_Our_Impact_Organisations – FINAL"],' +
-      "img.wp-image-1375," +
-      "img.wp-image-1378," +
+    "img.wp-image-1378," +
       "img.wp-image-1384," +
       "body.schools img.so-widget-image"
   ).attr({
